@@ -1,6 +1,7 @@
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 
 import javax.swing.*;
 
@@ -15,6 +16,7 @@ public class GUIDemo extends JFrame
     private JPanel panel;
     private JButton biggerButton;
     private JButton smallerButton;
+    private JButton callanButton;
 
     /**
      * Set up the application.
@@ -27,11 +29,14 @@ public class GUIDemo extends JFrame
         panel = new JPanel();
         biggerButton = new JButton("BIGGER");
         smallerButton = new JButton("SMALLER");
+        callanButton = new JButton("CALLAN");
         biggerButton.addActionListener(new ButtonHandler());
         smallerButton.addActionListener(new ButtonHandler());
+        callanButton.addActionListener(new ButtonHandler());
         add(panel);
         panel.add(biggerButton);
         panel.add(smallerButton);
+        panel.add(callanButton);
         setVisible(true);
     }
 
@@ -48,7 +53,13 @@ public class GUIDemo extends JFrame
         public void actionPerformed(ActionEvent e)
         {
             Dimension size = getSize();
-
+            
+            if (e.getSource().equals(callanButton))
+            {
+                 //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                 setTitle("Callan");
+                 callanButton.setBackground(new Color(0,255,0));
+            }
             if (e.getSource().equals(biggerButton))
             {
                 setSize(size.width + 10, size.height + 10);
